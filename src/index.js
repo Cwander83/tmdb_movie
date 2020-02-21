@@ -5,8 +5,8 @@ import ReactDOM from 'react-dom';
 import App from './App';
 
 import 'normalize.css';
-//import 'bootstrap/dist/css/bootstrap.min.css';
-import './scss/styles.css';
+
+import './index.css';
 
 ReactDOM.render(
     <Fragment>

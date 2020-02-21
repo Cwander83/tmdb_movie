@@ -1,7 +1,7 @@
-import React, { useState, useEffect } from 'react';
-import Modal from '../Modal';
+import React, { useState } from 'react';
+import Modal from '../../UI/Modal';
 
-const movieTable = props => {
+const MovieTable = props => {
     const [modalState, setModalState] = useState(false);
     const [activeMovie, setActiveMovie] = useState(0);
 
@@ -30,6 +30,7 @@ const movieTable = props => {
                                 <img
                                     style={{ width: '200px' }}
                                     src={`https://image.tmdb.org/t/p/original${movie.poster_path}`}
+                                    alt="movie poster"
                                 />
                             </div>
                         );
@@ -45,32 +46,15 @@ const movieTable = props => {
         </>
     );
 };
-export default movieTable;
+export default MovieTable;
 
-{
-    /* <Modal
-modalState={modalState}
-openModal={openModal}
-closeModal={closeModal}
->
-<div
-    onClick={closeModal}
-    style={{
-        backgroundImage: `url(https://image.tmdb.org/t/p/original${movie.backdrop_path})`,
-        backgroundSize: 'cover'
-    }}
->
-    <div className="col1">
-        <h4># {i + 1}</h4>
-    
-    </div>
-    <div className="col2">
-        <p>{movie.title}</p>
-        <p>{movie.overview}</p>
-        <p>{movie.release_date}</p>
-        <p>{movie.popularity}</p>
-        <p>{movie.vote_average}</p>
-    </div>
-</div>
-</Modal> */
-}
+
+
+    // <div className="col2">
+    //     <p>{movie.title}</p>
+    //     <p>{movie.overview}</p>
+    //     <p>{movie.release_date}</p>
+    //     <p>{movie.popularity}</p>
+    //     <p>{movie.vote_average}</p>
+    // </div>
+
