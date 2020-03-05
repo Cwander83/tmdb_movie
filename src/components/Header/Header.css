@@ -1,0 +1,12 @@
+header {
+	width: 100%;
+	border-bottom: 1px solid rgba(0, 0, 0, 0.4);
+}
+
+.title {
+	margin-left: 5%;
+}
+.title::nth(1) {
+	color: red;
+	font-size: 40px;
+}

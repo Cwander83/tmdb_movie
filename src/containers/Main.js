@@ -1,16 +1,16 @@
 import React, { useEffect, useState, useCallback } from 'react';
 
-import Buttons from './Buttons';
-import MovieTable from './Movies/MovieTable';
+import MovieTable from '../components/Movies/MovieTable';
 import Loading from '../UI/Loading';
-import Container from '../containers/Container';
+import Container from './Container';
 
-const Movie = props => {
+import SearchSection from '../components/SearchSection/SearchSection';
+
+const Main = props => {
 	const [genreState, setGenreState] = useState(28);
 	const [loading, setLoading] = useState(true);
 	const [yearState, setYearState] = useState(2019);
 	const [data, setData] = useState();
-	//console.log(yearState, genreState);
 
 	useEffect(() => {
 		const fetchData = async () => {
@@ -24,27 +24,34 @@ const Movie = props => {
 				})
 				.then(async response => {
 					// set data
-					await setData(response.results);
+					setData(response.results);
 
-					await setLoading(false);
+					setLoading(false);
 				});
 		};
 		fetchData();
 	}, [genreState, yearState]);
 
+	// function to change genre
 	const handleGenre = useCallback(event => {
 		event.preventDefault();
 
 		let genre = event.target.value;
 		setGenreState(genre);
 	}, []);
+	// function to change year
 
 	return (
 		<Container>
-			<Buttons click={handleGenre} genres={genreState} />
+			<SearchSection
+				setYearState={setYearState}
+				handleGenre={handleGenre}
+				genreState={genreState}
+			/>
+
 			{data && !loading ? <MovieTable data={data} /> : <Loading />}
 		</Container>
 	);
 };
 
-export default Movie;
+export default Main;
